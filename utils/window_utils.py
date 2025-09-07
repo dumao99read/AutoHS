@@ -55,7 +55,10 @@ choose_card_img_1080 = cv2.imread(os.path.join(figs_dir_path, "choose_card_1080.
 choose_hero_img_1080 = cv2.imread(os.path.join(figs_dir_path, "choose_hero_1080.png"))
 matching_img_1080 = cv2.imread(os.path.join(figs_dir_path, "matching_1080.png"))
 main_menu_img_1080 = cv2.imread(os.path.join(figs_dir_path, "main_menu_1080.png"))
-
+choose_card_img_768 = cv2.imread(os.path.join(figs_dir_path, "choose_card_768.png"))
+choose_hero_img_768 = cv2.imread(os.path.join(figs_dir_path, "choose_hero_768.png"))
+matching_img_768 = cv2.imread(os.path.join(figs_dir_path, "matching_768.png"))
+main_menu_img_768 = cv2.imread(os.path.join(figs_dir_path, "main_menu_768.png"))
 
 def get_HS_hwnd():
     app_names = ["Hearthstone", "炉石传说", "《爐石戰記》"]
@@ -274,6 +277,19 @@ def get_state():
         simm_choose_hero = ssim(curr_choose_hero_part, choose_hero_img_1080, multichannel=True, channel_axis = 2)
         simm_matching = ssim(curr_matching_part, matching_img_1080, multichannel=True, channel_axis = 2)
         simm_choose_card = ssim(curr_choose_card_part, choose_card_img_1080, multichannel=True, channel_axis = 2)
+
+        logger.debug(f"Similarity: main_menu: {simm_main_menu}, choose_hero: {simm_choose_hero}, matching: {simm_matching}, choose_card: {simm_choose_card}")
+    elif WIDTH == 1366:
+        curr_main_menu_part = im_opencv[194:444, 547:817]
+        # curr_choose_hero_part = im_opencv[560:710, 921:1071]
+        curr_choose_hero_part = im_opencv[561:711, 922:1072]
+        curr_matching_part = im_opencv[214:494, 556:838]
+        curr_choose_card_part = im_opencv[88:135, 510:849]
+
+        simm_main_menu = ssim(curr_main_menu_part, main_menu_img_768, multichannel=True, channel_axis = 2)
+        simm_choose_hero = ssim(curr_choose_hero_part, choose_hero_img_768, multichannel=True, channel_axis = 2)
+        simm_matching = ssim(curr_matching_part, matching_img_768, multichannel=True, channel_axis = 2)
+        simm_choose_card = ssim(curr_choose_card_part, choose_card_img_768, multichannel=True, channel_axis = 2)
 
         logger.debug(f"Similarity: main_menu: {simm_main_menu}, choose_hero: {simm_choose_hero}, matching: {simm_matching}, choose_card: {simm_choose_card}")
     else:

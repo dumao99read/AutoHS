@@ -1,7 +1,7 @@
 import json
 import platform
 from utils.autohs_logger import *
-from constants.pixel_coordinate import COORDINATES_1920_1080, COORDINATES_2560_1440, get_screen_resolution
+from constants.pixel_coordinate import COORDINATES_1920_1080, COORDINATES_2560_1440, COORDINATES_1366_768, get_screen_resolution
 # 每个回合开始发个表情的概率
 EMOJ_RATIO = 0.05
 
@@ -80,3 +80,5 @@ if WIDTH == 1920 and HEIGHT == 1080:
     autohs_config.click_coordinates = COORDINATES_1920_1080
 elif WIDTH == 2560 and HEIGHT == 1440:
     autohs_config.click_coordinates = COORDINATES_2560_1440
+elif WIDTH == 1366 and HEIGHT == 768:
+    autohs_config.click_coordinates = COORDINATES_1366_768
